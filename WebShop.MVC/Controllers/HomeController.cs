@@ -27,9 +27,9 @@ namespace WebShop.MVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index([FromQuery] ProductCategory category = ProductCategory.All)
+        public IActionResult Index(ProductCategory category = ProductCategory.All, int? minAmount = null, int? maxAmount = null)
         {
-            session.SetFilter(category);
+            session.SetFilter(category, minAmount, maxAmount);
 
             var aux_products = repository.GetOnlyProducts();
 

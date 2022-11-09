@@ -48,8 +48,7 @@
         var rangeSlider = document.getElementById("slider-range");
         var moneyFormat = wNumb({
             decimals: 0,
-            thousand: ",",
-            prefix: "$"
+            thousand: ","
         });
         noUiSlider.create(rangeSlider, {
             start: [500, 1000],
@@ -734,7 +733,7 @@
     });
 
     $("#filter_price").on("click", function (e) {
-        alert();
+        console.log($("#slider-range-value1").text());
     });
 
 })(jQuery);
