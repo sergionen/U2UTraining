@@ -134,7 +134,7 @@
                             <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Meats"> <img src="~/assets/imgs/theme/icons/category-9.svg" alt="" />Meats</a><span class="count">@ViewBag.CountMeatProducts</span>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Vegetables"> <img src="~/assets/imgs/theme/icons/category-8.svg" alt="" />Vegetables</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.Vegetables)</span>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Vegetables"> <img src="~/assets/imgs/theme/icons/category-8.svg" alt="" />Vegetables</a><span class="count">@ViewBag.CountVegetableProducts</span>
                         </li>
                         <li>
                             <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Snack"> <img src="~/assets/imgs/theme/icons/category-5.svg" alt="" />Snacks</a><span class="count">@ViewBag.CountSnackProducts</span>
