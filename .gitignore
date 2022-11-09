@@ -453,6 +453,10 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-.vs/*
+.vs/
 
-*/obj/*
+*/obj/
+
+WebShop.Core/obj/
+WebShop.Infra/obj/
+WebShop.MVC/obj/
