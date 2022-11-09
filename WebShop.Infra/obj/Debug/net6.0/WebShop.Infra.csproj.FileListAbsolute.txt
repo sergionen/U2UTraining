@@ -1,0 +1,17 @@
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\bin\Debug\net6.0\WebShop.Infra.deps.json
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\bin\Debug\net6.0\WebShop.Infra.runtimeconfig.json
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\bin\Debug\net6.0\WebShop.Infra.dll
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\bin\Debug\net6.0\WebShop.Infra.pdb
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\bin\Debug\net6.0\WebShop.Core.dll
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\bin\Debug\net6.0\WebShop.Core.pdb
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\WebShop.Infra.csproj.AssemblyReference.cache
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\WebShop.Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\WebShop.Infra.AssemblyInfoInputs.cache
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\WebShop.Infra.AssemblyInfo.cs
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\WebShop.Infra.csproj.CoreCompileInputs.cache
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\WebShop.Infra.csproj.CopyComplete
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\WebShop.Infra.dll
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\refint\WebShop.Infra.dll
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\WebShop.Infra.pdb
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\WebShop.Infra.genruntimeconfig.cache
+C:\Users\Students\Desktop\U2U-WebShop\WebShop.Infra\obj\Debug\net6.0\ref\WebShop.Infra.dll
