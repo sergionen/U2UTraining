@@ -457,5 +457,8 @@ $RECYCLE.BIN/
 # Custom
 .vs/
 WebShop.Core/obj/
+WebShop.Core/bin/Debug
 WebShop.Infra/obj/
+WebShop.Infra/bin/Debug
 WebShop.MVC/obj/
+WebShop.MVC/bin/Debug
