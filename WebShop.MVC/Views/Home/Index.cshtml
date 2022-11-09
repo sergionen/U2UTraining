@@ -21,7 +21,8 @@
     <script src="~/assets/js/plugins/scrollup.js"></script>
     <script src="~/assets/js/plugins/jquery.vticker-min.js"></script>
     <script src="~/assets/js/plugins/jquery.theia.sticky.js"></script>
-    <script src="~/assets/js/plugins/jquery.elevatezoom.js"></script>}
+    <script src="~/assets/js/plugins/jquery.elevatezoom.js"></script>
+}
 
 <main class="main">
     <div class="container mb-30">
@@ -90,7 +91,7 @@
                                         <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                     </div>
                                     <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="hot">@item.Badge</span>
+                                        <span class="@item.Badge.Item2">@item.Badge.Item1</span>
                                     </div>
                                 </div>
                                 <div class="product-content-wrap">
@@ -133,7 +134,7 @@
                             <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Meats"> <img src="~/assets/imgs/theme/icons/category-9.svg" alt="" />Meats</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.Meats)</span>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Vegetables"> <img src="~/assets/imgs/theme/icons/category-8.svg" alt="" />Vegetables</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.Vegetables)</span>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Vegetables"> <img src="~/assets/imgs/theme/icons/category-8.svg" alt="" />Vege</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.Vegetables)</span>
                         </li>
                         <li>
                             <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Snack"> <img src="~/assets/imgs/theme/icons/category-5.svg" alt="" />Snacks</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.Snack)</span>

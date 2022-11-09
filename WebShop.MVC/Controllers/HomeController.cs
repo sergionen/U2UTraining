@@ -16,14 +16,14 @@ namespace WebShop.MVC.Controllers
 
         private readonly ISessionService session;
 
-        private readonly IBadgeService badge;
+        private readonly IBadgeService _badge;
 
         public HomeController(ILogger<HomeController> logger, IProductRepository repository, ISessionService session, IBadgeService badge)
         {
             _logger = logger;
             this.repository = repository;
             this.session = session;
-            this.badge = badge;
+            this._badge = badge;
         }
 
         [HttpGet]
@@ -40,7 +40,7 @@ namespace WebShop.MVC.Controllers
                                                   Provider = p.Provider,
                                                   Score = p.GetReviewScore(),
                                                   Stars = p.GetStarsPercentage(),
-                                                  Badge = badge.GetText(p)
+                                                  Badge = _badge.GetInfo(p)
                                               });
             return View(model: products);
         }

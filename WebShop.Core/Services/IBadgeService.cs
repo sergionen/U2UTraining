@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WebShop.Core.Entities;
 
-namespace WebShop.Core.Services
+namespace WebShop.Core.Services;
+
+public interface IBadgeService
 {
-    public interface IBadgeService
-    {
-        string GetText(Product product);
-    }
+    (string, string) GetInfo(Product product);
 }

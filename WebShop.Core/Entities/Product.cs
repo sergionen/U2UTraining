@@ -36,8 +36,28 @@ namespace WebShop.Core.Entities
 
         public ProductCategory ProductCategory { get; set; }
 
+        public DateTime CreationDate { get; set; }
+
+        private int discount;
+        public int Discount
+        {
+            get { return discount; }
+            set
+            {
+                if (value > 0 && value < 100)
+                {
+                    discount = value;
+                }
+                else
+                {
+                    discount = 0;
+                }
+            }
+        }
+
         public Product(int id) : base(id)
         {
+            this.CreationDate = DateTime.Now;
         }
 
         public decimal GetReviewScore()

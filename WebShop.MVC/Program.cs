@@ -23,7 +23,7 @@ builder.Services.AddDbContext<WebShopDbContext>(options =>
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<ISessionService, SessionService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddSingleton<IBadgeService, BadgeService>();
+builder.Services.AddScoped<IBadgeService, BadgeService>();
 
 var app = builder.Build();
 
@@ -37,11 +37,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseSession();
 
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

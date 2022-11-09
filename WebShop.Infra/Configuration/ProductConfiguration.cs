@@ -38,8 +38,9 @@ namespace WebShop.Infra.Configuration
                 Price = 34.6M,
                 Provider = "Amazon",
                 ProductCategory = ProductCategory.Vegetables,
-                Description = "Delicious avocado"
-            },
+                Description = "Delicious avocado",
+                Discount = 0,
+        },
 
             new Product(2)
             {
@@ -48,8 +49,8 @@ namespace WebShop.Infra.Configuration
                 Price = 4.9M,
                 Provider = "Amazon",
                 ProductCategory = ProductCategory.Snack,
-                Description = "Delicious nuts"
-
+                Description = "Delicious nuts",
+                Discount = 50,
             },
 
             new Product(3)
@@ -59,7 +60,8 @@ namespace WebShop.Infra.Configuration
                 Price = 64.6M,
                 Provider = "MeatMarket",
                 ProductCategory = ProductCategory.Meats,
-                Description = "Delicious Stake"
+                Description = "Delicious Stake",
+                Discount = 20,
             },
 
             new Product(4)
@@ -69,7 +71,8 @@ namespace WebShop.Infra.Configuration
                 Price = 0.6M,
                 Provider = "Fuentsanta",
                 ProductCategory = ProductCategory.All,
-                Description = "Delicious Water"
+                Description = "Delicious Water",
+                Discount = 0,
             });
         }
     }

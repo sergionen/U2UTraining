@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShop.Infra.Repositories;
 
@@ -11,9 +12,10 @@ using WebShop.Infra.Repositories;
 namespace WebShop.Infra.Migrations
 {
     [DbContext(typeof(WebShopDbContext))]
-    partial class WebShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221109141449_update_product_add_attributes")]
+    partial class update_product_add_attributes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,7 +72,7 @@ namespace WebShop.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2022, 11, 9, 15, 49, 0, 580, DateTimeKind.Local).AddTicks(1646),
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delicious avocado",
                             Discount = 0,
                             ImgUrl = "assets/imgs/shop/product-9-1.jpg",
@@ -82,9 +84,9 @@ namespace WebShop.Infra.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2022, 11, 9, 15, 49, 0, 580, DateTimeKind.Local).AddTicks(1684),
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delicious nuts",
-                            Discount = 50,
+                            Discount = 0,
                             ImgUrl = "assets/imgs/shop/product-3-1.jpg",
                             Name = "Nuts",
                             Price = 4.9m,
@@ -94,9 +96,9 @@ namespace WebShop.Infra.Migrations
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2022, 11, 9, 15, 49, 0, 580, DateTimeKind.Local).AddTicks(1687),
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delicious Stake",
-                            Discount = 20,
+                            Discount = 0,
                             ImgUrl = "assets/imgs/shop/product-2-1.jpg",
                             Name = "Stake Meat",
                             Price = 64.6m,
@@ -106,7 +108,7 @@ namespace WebShop.Infra.Migrations
                         new
                         {
                             Id = 4,
-                            CreationDate = new DateTime(2022, 11, 9, 15, 49, 0, 580, DateTimeKind.Local).AddTicks(1689),
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delicious Water",
                             Discount = 0,
                             ImgUrl = "assets/imgs/shop/product-1-1.jpg",
