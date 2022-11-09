@@ -2425,23 +2425,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Students\\.nuget\\packages\\": {},
+    "C:\\Users\\twahi\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Students\\Desktop\\U2U-WebShop\\WebShop.MVC\\WebShop.MVC.csproj",
+      "projectUniqueName": "C:\\Users\\twahi\\Documents\\Dev\\U2U\\New\\WebShop.MVC\\WebShop.MVC.csproj",
       "projectName": "WebShop.MVC",
-      "projectPath": "C:\\Users\\Students\\Desktop\\U2U-WebShop\\WebShop.MVC\\WebShop.MVC.csproj",
-      "packagesPath": "C:\\Users\\Students\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Students\\Desktop\\U2U-WebShop\\WebShop.MVC\\obj\\",
+      "projectPath": "C:\\Users\\twahi\\Documents\\Dev\\U2U\\New\\WebShop.MVC\\WebShop.MVC.csproj",
+      "packagesPath": "C:\\Users\\twahi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\twahi\\Documents\\Dev\\U2U\\New\\WebShop.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Students\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\twahi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2457,11 +2457,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Students\\Desktop\\U2U-WebShop\\WebShop.Core\\WebShop.Core.csproj": {
-              "projectPath": "C:\\Users\\Students\\Desktop\\U2U-WebShop\\WebShop.Core\\WebShop.Core.csproj"
+            "C:\\Users\\twahi\\Documents\\Dev\\U2U\\New\\WebShop.Core\\WebShop.Core.csproj": {
+              "projectPath": "C:\\Users\\twahi\\Documents\\Dev\\U2U\\New\\WebShop.Core\\WebShop.Core.csproj"
             },
-            "C:\\Users\\Students\\Desktop\\U2U-WebShop\\WebShop.Infra\\WebShop.Infra.csproj": {
-              "projectPath": "C:\\Users\\Students\\Desktop\\U2U-WebShop\\WebShop.Infra\\WebShop.Infra.csproj"
+            "C:\\Users\\twahi\\Documents\\Dev\\U2U\\New\\WebShop.Infra\\WebShop.Infra.csproj": {
+              "projectPath": "C:\\Users\\twahi\\Documents\\Dev\\U2U\\New\\WebShop.Infra\\WebShop.Infra.csproj"
             }
           }
         }
@@ -2506,7 +2506,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

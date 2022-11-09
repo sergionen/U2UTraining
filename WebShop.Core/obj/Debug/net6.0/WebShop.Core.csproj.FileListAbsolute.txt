@@ -10,3 +10,15 @@ C:\Users\Students\Desktop\U2U-WebShop\WebShop.Core\obj\Debug\net6.0\WebShop.Core
 C:\Users\Students\Desktop\U2U-WebShop\WebShop.Core\obj\Debug\net6.0\refint\WebShop.Core.dll
 C:\Users\Students\Desktop\U2U-WebShop\WebShop.Core\obj\Debug\net6.0\WebShop.Core.pdb
 C:\Users\Students\Desktop\U2U-WebShop\WebShop.Core\obj\Debug\net6.0\ref\WebShop.Core.dll
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\bin\Debug\net6.0\WebShop.Core.deps.json
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\bin\Debug\net6.0\WebShop.Core.dll
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\bin\Debug\net6.0\WebShop.Core.pdb
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\obj\Debug\net6.0\WebShop.Core.csproj.AssemblyReference.cache
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\obj\Debug\net6.0\WebShop.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\obj\Debug\net6.0\WebShop.Core.AssemblyInfoInputs.cache
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\obj\Debug\net6.0\WebShop.Core.AssemblyInfo.cs
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\obj\Debug\net6.0\WebShop.Core.csproj.CoreCompileInputs.cache
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\obj\Debug\net6.0\WebShop.Core.dll
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\obj\Debug\net6.0\refint\WebShop.Core.dll
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\obj\Debug\net6.0\WebShop.Core.pdb
+C:\Users\twahi\Documents\Dev\U2U\New\WebShop.Core\obj\Debug\net6.0\ref\WebShop.Core.dll
