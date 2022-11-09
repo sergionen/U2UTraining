@@ -101,7 +101,7 @@
                                     <h2><a href="shop-product-right.html">@item.Name</a></h2>
                                     <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: @item.Stars"></div> <!-- The percentage specifies the amount of yellow filled stars -->
+                                            <div class="product-rating" style="width: @item.Stars%"></div> <!-- The percentage specifies the amount of yellow filled stars -->
                                         </div>
                                         <span class="font-small ml-5 text-muted">@item.Score</span>
                                     </div>
@@ -128,16 +128,16 @@
                     <h5 class="section-title style-1 mb-30">Category</h5>
                     <ul>
                         <li>
-                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.All"> <img src="~/assets/imgs/theme/icons/category-1.svg" alt="" />All</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.All)</span>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.All"> <img src="~/assets/imgs/theme/icons/category-1.svg" alt="" />All</a><span class="count">@ViewBag.CountAllProducts</span>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Meats"> <img src="~/assets/imgs/theme/icons/category-9.svg" alt="" />Meats</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.Meats)</span>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Meats"> <img src="~/assets/imgs/theme/icons/category-9.svg" alt="" />Meats</a><span class="count">@ViewBag.CountMeatProducts</span>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Vegetables"> <img src="~/assets/imgs/theme/icons/category-8.svg" alt="" />Vege</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.Vegetables)</span>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Vegetables"> <img src="~/assets/imgs/theme/icons/category-8.svg" alt="" />Vegetables</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.Vegetables)</span>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Snack"> <img src="~/assets/imgs/theme/icons/category-5.svg" alt="" />Snacks</a><span class="count">@Model.Count(p => p.ProductCategory == ProductCategory.Snack)</span>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="@ProductCategory.Snack"> <img src="~/assets/imgs/theme/icons/category-5.svg" alt="" />Snacks</a><span class="count">@ViewBag.CountSnackProducts</span>
                         </li>
                     </ul>
                 </div>
@@ -148,8 +148,12 @@
                         <div class="price-filter-inner">
                             <div id="slider-range" class="mb-20"></div>
                             <div class="d-flex justify-content-between">
-                                <div class="caption">From: <strong id="slider-range-value1" class="text-brand"></strong></div>
-                                <div class="caption">To: <strong id="slider-range-value2" class="text-brand"></strong></div>
+                                <div class="caption">
+                                    From: <strong id="slider-range-value1" class="text-brand"></strong> <strong class="text-brand">€</strong>
+                                </div>
+                                <div class="caption">
+                                    To: <strong id="slider-range-value2" class="text-brand"></strong> <strong class="text-brand">€</strong>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -159,9 +163,3 @@
         </div>
     </div>
 </main>
-
-<script>
-
-    
-        
-</script>

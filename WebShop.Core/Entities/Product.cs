@@ -32,7 +32,7 @@ namespace WebShop.Core.Entities
 
         public string ImgUrl { get; set; } = default!;
 
-        public IList<ReviewScore> ReviewsScore { get; set; } = new List<ReviewScore>();
+        public IList<ReviewScore> ReviewsScores { get; set; } = new List<ReviewScore>();
 
         public ProductCategory ProductCategory { get; set; }
 
@@ -62,8 +62,8 @@ namespace WebShop.Core.Entities
 
         public decimal GetReviewScore()
         {
-            if (ReviewsScore.Count() != 0)
-                return ReviewsScore.Average(r => r.Score);
+            if (ReviewsScores.Count() != 0)
+                return ReviewsScores.Average(r => r.Score);
             return 0;
         }
 

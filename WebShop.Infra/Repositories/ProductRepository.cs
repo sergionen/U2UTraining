@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,12 +24,17 @@ namespace WebShop.Infra.Repositories
 
         public Product? GetProductWithId(int id)
         {
-            return _db.Products.FirstOrDefault(p => p.Id == id);
+            return _db.Products.Include(p => p.ReviewsScores).FirstOrDefault(p => p.Id == id);
+        }
+
+        public IEnumerable<Product> GetOnlyProducts()
+        {
+            return _db.Products;
         }
 
         public IEnumerable<Product> WithFilter()
         {
-            var products = _db.Products.ToList();
+            var products = _db.Products.Include(p => p.ReviewsScores).ToList();
             var (minAmount, maxAmount, category) = session.GetFilter();
 
             if (minAmount is not null)
