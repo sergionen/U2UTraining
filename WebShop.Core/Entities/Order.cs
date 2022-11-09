@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace WebShop.Core.Entities
 {
-    internal class Order
+    public class Order
     {
         public IEnumerable<Product>? Cart { get; set; }
-        public Decimal  Total { get; set; } = Decimal.Zero;
 
         public Order()
         {
