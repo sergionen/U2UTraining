@@ -178,7 +178,7 @@ namespace WebShop.Infra.Migrations
             modelBuilder.Entity("WebShop.Core.Entities.ReviewScore", b =>
                 {
                     b.HasOne("WebShop.Core.Entities.Product", "Product")
-                        .WithMany("ReviewsScore")
+                        .WithMany("ReviewsScores")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -188,7 +188,7 @@ namespace WebShop.Infra.Migrations
 
             modelBuilder.Entity("WebShop.Core.Entities.Product", b =>
                 {
-                    b.Navigation("ReviewsScore");
+                    b.Navigation("ReviewsScores");
                 });
 #pragma warning restore 612, 618
         }

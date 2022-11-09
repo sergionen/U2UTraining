@@ -17,7 +17,7 @@ namespace WebShop.Infra.Configuration
 
             reviewScore.Property(r => r.Score).HasColumnType("decimal(8,3)");
 
-            //reviewScore.HasOne(r => r.Product).WithMany(p=>p.ReviewsScore);
+            //reviewScore.HasOne(r => r.Product).WithMany(p=>p.ReviewsScores);
 
             reviewScore.HasData(
                     new ReviewScore(1) { Score = 3, ProductId = 1 },

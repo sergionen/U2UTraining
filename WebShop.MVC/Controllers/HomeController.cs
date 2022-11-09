@@ -30,16 +30,24 @@ namespace WebShop.MVC.Controllers
         public IActionResult Index([FromQuery] ProductCategory category = ProductCategory.All)
         {
             session.SetFilter(category);
+
+            var aux_products = repository.GetOnlyProducts();
+
+            ViewBag.CountAllProducts = aux_products.Count();
+            ViewBag.CountSnackProducts = aux_products.Count(p => p.ProductCategory == ProductCategory.Snack);
+            ViewBag.CountMeatProducts = aux_products.Count(p => p.ProductCategory == ProductCategory.Meats);
+            ViewBag.CountVegetableProducts = aux_products.Count(p => p.ProductCategory == ProductCategory.Vegetables);
+
             var products = repository.WithFilter()
                                               .Select(p => new HomeIndexVM()
                                               {
                                                   Name = p.Name,
                                                   ImgUrl = p.ImgUrl,
-                                                  Price = p.Price,
+                                                  Price = Math.Round(p.Price,2),
                                                   ProductCategory = p.ProductCategory,
                                                   Provider = p.Provider,
-                                                  Score = p.GetReviewScore(),
-                                                  Stars = p.GetStarsPercentage(),
+                                                  Score = Math.Round(p.GetReviewScore(),2),
+                                                  Stars = Math.Round(p.GetStarsPercentage(),2),
                                                   Badge = badge.GetText(p)
                                               });
             return View(model: products);

@@ -23,7 +23,7 @@ namespace WebShop.Infra.Configuration
             
             product.Property(p => p.ProductCategory).HasMaxLength(10).HasConversion<string>();
             
-            product.HasMany(p => p.ReviewsScore)
+            product.HasMany(p => p.ReviewsScores)
                 .WithOne(r => r.Product)
                 .OnDelete(DeleteBehavior.Cascade); 
             
