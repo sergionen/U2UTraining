@@ -45,12 +45,6 @@ namespace WebShop.MVC.Controllers
             return View(model: products);
         }
 
-        public IActionResult ShoppingBasket()
-        {
-
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();
