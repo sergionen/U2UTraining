@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Diagnostics;
 using WebShop.Core.Entities;
 using WebShop.Core.Repositories;
@@ -18,12 +19,18 @@ namespace WebShop.MVC.Controllers
 
         private readonly IBadgeService badge;
 
-        public HomeController(ILogger<HomeController> logger, IProductRepository repository, ISessionService session, IBadgeService badge)
+        private readonly IOrderService orderService;
+
+        private readonly IOrderRepository orderRepository;
+
+        public HomeController(ILogger<HomeController> logger, IProductRepository repository, ISessionService session, IBadgeService badge, IOrderService service, IOrderRepository orderRepository)
         {
             _logger = logger;
             this.repository = repository;
             this.session = session;
             this.badge = badge;
+            this.orderService = service;
+            this.orderRepository = orderRepository;
         }
 
         [HttpGet]
@@ -46,6 +53,7 @@ namespace WebShop.MVC.Controllers
                                                   Price = Math.Round(p.Price,2),
                                                   ProductCategory = p.ProductCategory,
                                                   Provider = p.Provider,
+                                                  Id = p.Id
                                                   Score = Math.Round(p.GetReviewScore(), 2),
                                                   Stars = Math.Round(p.GetStarsPercentage(), 2),
                                                   Badge = badge.GetInfo(p)
@@ -53,10 +61,26 @@ namespace WebShop.MVC.Controllers
             return View(model: products);
         }
 
-        public IActionResult ShoppingBasket()
-        {
+        //[HttpPost]
+        //public IActionResult ShoppingBasket()
+        //{
+        //    var order = orderService.GetCurrentOrder();
+        //    return View(order);
+        //}
 
-            return View();
+        [HttpPost]
+        public async Task<IActionResult> ShoppingBasket(int id)
+        {
+            orderService.AddProductToCurrentOrder(id);
+            var order = orderService.GetCurrentOrder();
+            Decimal price = 0;
+            foreach (var item in order.Products)
+            {
+                price += item.Price; 
+            }
+            order.Total = price;
+            await orderRepository.Save(order);
+            return View(order);
         }
 
         public IActionResult Privacy()
