@@ -83,6 +83,11 @@ namespace WebShop.MVC.Controllers
             return View(order);
         }
 
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
