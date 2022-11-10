@@ -15,12 +15,14 @@ namespace WebShop.Infra.Repositories
 
         public DbSet<Product> Products => Set<Product>();
         public DbSet<ReviewScore> ReviewScores => Set<ReviewScore>();
+        public DbSet<Order> Order => Set<Order>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         { 
             base.OnModelCreating(modelBuilder); 
             modelBuilder.ApplyConfiguration(new ReviewScoreConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
         }
 
 

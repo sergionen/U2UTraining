@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace WebShop.Core.Entities
 {
-    public class Order
+    public class Order: EntityBase
     {
-        public IEnumerable<Product>? Cart { get; set; }
+        public IEnumerable<Product>? Products { get; set; }
+        public Decimal ? Total { get; set; }    
 
-        public Order()
+        public Order(int id) : base(id)
         {
-
         }
     }
 }
