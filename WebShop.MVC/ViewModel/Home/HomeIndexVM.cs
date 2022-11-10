@@ -16,7 +16,7 @@ namespace WebShop.MVC.ViewModel.Home
 
         public decimal Score { get; set; }
 
-        public string? Badge { get; set; }
+        public (string, string) Badge { get; set; }
 
         public double Stars { get; set; }
 

@@ -48,8 +48,7 @@
         var rangeSlider = document.getElementById("slider-range");
         var moneyFormat = wNumb({
             decimals: 0,
-            thousand: ",",
-            prefix: "$"
+            thousand: ","
         });
         noUiSlider.create(rangeSlider, {
             start: [500, 1000],
@@ -734,7 +733,19 @@
     });
 
     $("#filter_price").on("click", function (e) {
-        alert();
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        let category = "";
+        if (urlParams.has('category'))
+            category = urlParams.get('category');
+        else
+            category = "All";
+
+        let minAmount = $("#slider-range-value1").text();
+        let maxAmount = $("#slider-range-value2").text();
+
+        window.location.replace("?category=" + category + "&minAmount=" + minAmount + "&maxAmount=" + maxAmount);
     });
 
 })(jQuery);

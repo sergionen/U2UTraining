@@ -32,18 +32,38 @@ namespace WebShop.Core.Entities
 
         public string ImgUrl { get; set; } = default!;
 
-        public IList<ReviewScore> ReviewsScore { get; set; } = new List<ReviewScore>();
+        public IList<ReviewScore> ReviewsScores { get; set; } = new List<ReviewScore>();
 
         public ProductCategory ProductCategory { get; set; }
 
+        public DateTime CreationDate { get; set; }
+
+        private int discount;
+        public int Discount
+        {
+            get { return discount; }
+            set
+            {
+                if (value > 0 && value < 100)
+                {
+                    discount = value;
+                }
+                else
+                {
+                    discount = 0;
+                }
+            }
+        }
+
         public Product(int id) : base(id)
         {
+            this.CreationDate = DateTime.Now;
         }
 
         public decimal GetReviewScore()
         {
-            if (ReviewsScore.Count() != 0)
-                return ReviewsScore.Average(r => r.Score);
+            if (ReviewsScores.Count() != 0)
+                return ReviewsScores.Average(r => r.Score);
             return 0;
         }
 

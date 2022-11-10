@@ -5,12 +5,26 @@ namespace WebShop.MVC.Services
 {
     public class BadgeService : IBadgeService
     {
-        public string GetText(Product product)
+        public (string, string) GetInfo(Product product)
         {
-            if (product.ProductCategory == ProductCategory.Meats)
-                return "Hot";
-            else
-                return "New";
+            (string, string) badge = ("", "");
+
+            if ((DateTime.Now - product.CreationDate).Days < 30)
+            {
+                badge = ("New", "new");
+            }
+
+            if (product.GetReviewScore() >= 4)
+            {
+                badge = ("Hot", "sale");
+            }
+
+            if (product.Discount != 0)
+            {
+                badge = ($"{product.Discount}%", "best");
+            }
+
+            return badge;
         }
     }
 }
