@@ -20,9 +20,7 @@
                             <div class="header-info">
                                 <ul>
                                     <li><a href="page-about.htlm">About Us</a></li>
-
-                                <partial name="_LoginPartial">
-                                    
+                                    <partial name="_LoginPartial">
                                     <li><a href="shop-wishlist.html">Wishlist</a></li>
                                     <li><a href="shop-order.html">Order Tracking</a></li>
                                 </ul>
@@ -220,7 +218,9 @@
                 <div class="container">
                     <div class="header-wrap header-space-between position-relative">
                         <div class="logo logo-width-1 d-block d-lg-none">
-                            <a href="index.html"><img src="~/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                        <a asp-controller="Home" asp-action="Index">
+                            <img src="~/assets/imgs/theme/logo.svg" alt="logo" />
+                        </a>
                         </div>
                         <div class="header-nav d-none d-lg-flex">
                             <div class="main-categori-wrap d-none d-lg-block">

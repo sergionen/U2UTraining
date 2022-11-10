@@ -9,5 +9,6 @@ namespace WebShop.MVC.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the User class
 public class User : IdentityUser
 {
+    public string? Phone { get; set; }
 }
 
