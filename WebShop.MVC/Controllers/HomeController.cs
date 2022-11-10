@@ -27,7 +27,7 @@ namespace WebShop.MVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(ProductCategory category = ProductCategory.All, int? minAmount = null, int? maxAmount = null)
+        public async Task<IActionResult> Index(ProductCategory category = ProductCategory.All, int? minAmount = null, int? maxAmount = null)
         {
             session.SetFilter(category, minAmount, maxAmount);
 
