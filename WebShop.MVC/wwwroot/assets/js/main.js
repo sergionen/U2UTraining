@@ -733,7 +733,19 @@
     });
 
     $("#filter_price").on("click", function (e) {
-        console.log($("#slider-range-value1").text());
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        let category = "";
+        if (urlParams.has('category'))
+            category = urlParams.get('category');
+        else
+            category = "All";
+
+        let minAmount = $("#slider-range-value1").text();
+        let maxAmount = $("#slider-range-value2").text();
+
+        window.location.replace("?category=" + category + "&minAmount=" + minAmount + "&maxAmount=" + maxAmount);
     });
 
 })(jQuery);
