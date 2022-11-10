@@ -3,6 +3,9 @@ using WebShop.Core.Repositories;
 using WebShop.Core.Services;
 using WebShop.Infra.Repositories;
 using WebShop.MVC.Services;
+using Microsoft.AspNetCore.Identity;
+using WebShop.MVC.Data;
+using WebShop.MVC.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,12 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddDbContext<WebShopDbContext>(options => 
                         options.UseSqlServer(builder.Configuration.GetConnectionString("WebShopDb")));
+
+builder.Services.AddDbContext<AuthentificationContext>(options =>
+                        options.UseSqlServer(builder.Configuration.GetConnectionString("AuthentificationContextConnection")));
+
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<AuthentificationContext>();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<ISessionService, SessionService>();
@@ -39,6 +48,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
