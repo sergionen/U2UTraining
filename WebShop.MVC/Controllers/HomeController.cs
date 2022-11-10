@@ -37,6 +37,7 @@ namespace WebShop.MVC.Controllers
             ViewBag.CountSnackProducts = aux_products.Count(p => p.ProductCategory == ProductCategory.Snack);
             ViewBag.CountMeatProducts = aux_products.Count(p => p.ProductCategory == ProductCategory.Meats);
             ViewBag.CountVegetableProducts = aux_products.Count(p => p.ProductCategory == ProductCategory.Vegetables);
+            ViewBag.Title = "Home";
 
             var products = repository.WithFilter()
                                               .Select(p => new HomeIndexVM()

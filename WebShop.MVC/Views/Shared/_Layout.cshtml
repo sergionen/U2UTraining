@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebShop.MVC</title>
+    <title>@ViewBag.Title - WebShop.MVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/assets/css/main.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebShop.MVC.styles.css" asp-append-version="true" />
@@ -20,7 +20,9 @@
                             <div class="header-info">
                                 <ul>
                                     <li><a href="page-about.htlm">About Us</a></li>
-                                    <li><a href="page-account.html">My Account</a></li>
+
+                                <partial name="_LoginPartial">
+                                    
                                     <li><a href="shop-wishlist.html">Wishlist</a></li>
                                     <li><a href="shop-order.html">Order Tracking</a></li>
                                 </ul>
