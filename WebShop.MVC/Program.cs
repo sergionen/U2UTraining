@@ -26,6 +26,7 @@ builder.Services.AddDbContext<WebShopDbContext>(options =>
 builder.Services.AddDbContext<AuthentificationContext>(options =>
                         options.UseSqlServer(builder.Configuration.GetConnectionString("AuthentificationContextConnection")));
 
+
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<AuthentificationContext>();
 
@@ -57,5 +58,6 @@ app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapRazorPages();
 
 app.Run();
