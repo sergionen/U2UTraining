@@ -12,5 +12,6 @@ namespace WebShop.Core.Repositories
         IEnumerable<Order> WithFilter();
         Order? GetOrderWithId(int id);
         Order CreateOrder();
+        Task Save(Order order);
     }
 }

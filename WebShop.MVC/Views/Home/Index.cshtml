@@ -112,7 +112,7 @@
                                             <span>@item.Price€</span>
                                         </div>
                                         <div class="add-cart">
-                                            <form method="post" asp-action="ShoppingBasket"  display="inline">
+                                            <form method="post" asp-action="ShoppingBasket" asp-route-id="@item.Id" display="inline">
                                                 <input type="hidden" name="name" value="value" />
                                                 <a class="add" href="#" onclick="this.parentNode.submit();">
                                                     <i class="fi-rs-shopping-cart mr-5"></i>

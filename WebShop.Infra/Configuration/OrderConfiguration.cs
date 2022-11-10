@@ -18,6 +18,7 @@ namespace WebShop.Infra.Configuration
 
             order.HasMany(o => o.Products)
                 .WithOne();
+                
 
             order.Property(o => o.Total).HasColumnType("decimal(8,3)");
 

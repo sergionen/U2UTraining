@@ -19,5 +19,7 @@ namespace WebShop.MVC.ViewModel.Home
         public string? Badge { get; set; }
 
         public double Stars { get; set; }
+
+        public int Id { get; set; }
     }
 }

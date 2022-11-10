@@ -1,4 +1,5 @@
-﻿using WebShop.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+using WebShop.Core.Entities;
 using WebShop.Core.Repositories;
 using WebShop.Core.Services;
 
@@ -9,11 +10,15 @@ namespace WebShop.MVC.Services
 
         private readonly ISessionService _sessionService;
         private readonly IOrderRepository _orderRepository;
+        
+        private readonly IProductRepository _productRepository;
 
-        public OrderService(ISessionService? sessionService, IOrderRepository? repository)
+        public OrderService(ISessionService? sessionService, IOrderRepository? orderRepository,  IProductRepository productRepository)
         {
             _sessionService = sessionService;
-            _orderRepository = repository;   
+            _orderRepository = orderRepository;
+            
+            _productRepository = productRepository;
         }
 
         public Order GetCurrentOrder()
@@ -34,7 +39,9 @@ namespace WebShop.MVC.Services
 
         void IOrderService.AddProductToCurrentOrder(int productId)
         {
-            throw new NotImplementedException();
+            var order = GetCurrentOrder();
+            var product = _productRepository.GetProductWithId(productId);
+            order.Products.Add(product);
         }
 
         Order? IOrderService.GetInvoicedOrder()
