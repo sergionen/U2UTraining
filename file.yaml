@@ -1,0 +1,81 @@
+trigger:
+ branches:
+  include:
+   -main
+
+pool:
+ vmImage: windows-latest
+
+variabels:
+ buildConfiguration : debug ## allow for atuoamtic account confirmation
+ dotnet-verison : 6.x
+ debug : true
+ resourceGroup : u2u-practice-days
+ location : eastUS
+ webAppName : u2u-practice-days
+ appServicePlanName : ASP-u2upracticedays-9890
+
+stages : 
+ jobs:
+  -job : Build
+   steps :
+   -task: PowerShell@2
+   displayName : Print all pipeline variables
+   inputs : 
+	targetType : 'inline'
+	script : |
+	 Write-Host "### All pipeline variables###"
+	 Write-Host "Build ID"$(build.buildid)
+	 Write-Host "Build NR"$(build.buildnumber)
+	 Write-Host "buildConfiguration" $(buildConfiguration)
+	 Write-Host "dotnet-version" $(dotnet-version)
+	 Write-Host "resourceGroup" $(resourceGroup)
+	 Write-Host "webAppName" $(webAppName)
+	 Write-Host "location" $(location)
+   -task : UseDotNet@2
+   displayName : Install .NET SDK
+   inputs : 
+    packageType : 'sdk'
+	version : '$(dotnet-version)'
+   -task : DotNetCoreCLI@2
+   displayName : Build projects
+   inputs : 
+    command : 'build'
+	projects : '**/*.csproj'
+	arguments : '--configuration $(buildConfiguration)'
+   -task : DotNetCoreCLI@2
+   displayName : Publish web project
+   inputs : 
+    command : 'publish'
+	publishWebProjects : true
+	arguments : '**configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+   -task : PublishBuildArtifact@1
+   displayName : Upload site artifact
+   inputs : 
+    PathPublish : '$Build.ArtifactStagingDirectory)'
+	ArtifactName : 'drop'
+	publishLocation : 'Container'
+
+  -job:
+  displayName : Deploy WebApp
+  steps : 
+   -checkout : none
+   - task : DwonloadPipelineArtifact@2
+   displayName : Download build artifacts
+   inputs :
+    source : 'current'
+	artifact : 'drop'
+	path : $(Build.Sourcesdirectory)/drop
+   #Debugging only
+	-task : PowerShell@2
+	condition : eq(variables.debug, 'true') 
+	displayName : List drop files (debug)
+	inputs :
+	 script : Get-Children -Path $(Build.SourcesDirectory)\drop -recurse
+	 targetType : inline
+	-task : AzureRmWebAppDeployment@4
+	inputs : 
+	 ConnectionType : 'U2U-Practice-Days'
+	 appType : 'webApp'
+	 WebAppName : '$(webAppName)'
+	 packageForLinux : '$(Build.SourcesDirectory)/drop/*.zip'
