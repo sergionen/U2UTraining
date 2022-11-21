@@ -50,13 +50,14 @@ namespace WebShop.MVC.Controllers
                                               {
                                                   Name = p.Name,
                                                   ImgUrl = p.ImgUrl,
-                                                  Price = Math.Round(p.Price,2),
+                                                  Price = Math.Round(p.Price, 2),
                                                   ProductCategory = p.ProductCategory,
                                                   Provider = p.Provider,
                                                   Score = Math.Round(p.GetReviewScore(), 2),
                                                   Stars = Math.Round(p.GetStarsPercentage(), 2),
-                                                  Badge = badge.GetInfo(p)
-                                              });
+                                                  Badge = badge.GetInfo(p),
+                                                  Id = p.Id
+                                              }); ;
             return View(model: products);
         }
 
