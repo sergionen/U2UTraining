@@ -1,19 +1,12 @@
 trigger:
- branches:
-  include:
-   -main
 
-pool:
- vmImage: windows-latest
-
-variabels:
  buildConfiguration : debug ## allow for atuoamtic account confirmation
  dotnet-verison : 6.x
  debug : true
- resourceGroup : u2u-practice-days
- location : eastUS
- webAppName : u2u-practice-days
- appServicePlanName : ASP-u2upracticedays-9890
+ resourceGroup : DefaultResourceGroup-WEU
+ location : West Europe
+ webAppName : OurAppppppp
+ appServicePlanName : ASP-u2uexample-a5c0
 
 stages : 
  jobs:
@@ -78,4 +71,11 @@ stages :
 	 ConnectionType : 'U2U-Practice-Days'
 	 appType : 'webApp'
 	 WebAppName : '$(webAppName)'
-	 packageForLinux : '$(Build.SourcesDirectory)/drop/*.zip'
+	 packageForLinux : '$(Build.SourcesDirectory)/drop/*.zip' branches:
+  include:
+   -main
+
+pool:
+ vmImage: windows-latest
+
+variabels:
