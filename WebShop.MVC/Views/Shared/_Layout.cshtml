@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title - WebShop.MVC</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/assets/css/vendors/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/assets/css/main.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebShop.MVC.styles.css" asp-append-version="true" />
+
+    @await RenderSectionAsync("StyleSheets", required: false)
 </head>
 <body>
         <header class="header-area header-style-1 header-height-2">
@@ -922,9 +924,9 @@
         </div>
     </footer>
     <!-- Preloader Start -->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-     
+    <script src="~/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/vendor/bootstrap.bundle.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 
     <script src="~/assets/js/main.js" asp-append-version="true"></script>
