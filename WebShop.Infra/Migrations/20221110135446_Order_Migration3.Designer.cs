@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShop.Infra.Repositories;
 
@@ -11,9 +12,10 @@ using WebShop.Infra.Repositories;
 namespace WebShop.Infra.Migrations
 {
     [DbContext(typeof(WebShopDbContext))]
-    partial class WebShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221110135446_Order_Migration3")]
+    partial class Order_Migration3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,15 +48,9 @@ namespace WebShop.Infra.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Discount")
-                        .HasColumnType("int");
 
                     b.Property<string>("ImgUrl")
                         .IsRequired()
@@ -91,9 +87,7 @@ namespace WebShop.Infra.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2022, 11, 9, 15, 49, 0, 580, DateTimeKind.Local).AddTicks(1646),
                             Description = "Delicious avocado",
-                            Discount = 0,
                             ImgUrl = "assets/imgs/shop/product-9-1.jpg",
                             Name = "Avocado",
                             Price = 34.6m,
@@ -103,9 +97,7 @@ namespace WebShop.Infra.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2022, 11, 9, 15, 49, 0, 580, DateTimeKind.Local).AddTicks(1684),
                             Description = "Delicious nuts",
-                            Discount = 50,
                             ImgUrl = "assets/imgs/shop/product-3-1.jpg",
                             Name = "Nuts",
                             Price = 4.9m,
@@ -115,9 +107,7 @@ namespace WebShop.Infra.Migrations
                         new
                         {
                             Id = 3,
-                            CreationDate = new DateTime(2022, 11, 9, 15, 49, 0, 580, DateTimeKind.Local).AddTicks(1687),
                             Description = "Delicious Stake",
-                            Discount = 20,
                             ImgUrl = "assets/imgs/shop/product-2-1.jpg",
                             Name = "Stake Meat",
                             Price = 64.6m,
@@ -127,9 +117,7 @@ namespace WebShop.Infra.Migrations
                         new
                         {
                             Id = 4,
-                            CreationDate = new DateTime(2022, 11, 9, 15, 49, 0, 580, DateTimeKind.Local).AddTicks(1689),
                             Description = "Delicious Water",
-                            Discount = 0,
                             ImgUrl = "assets/imgs/shop/product-1-1.jpg",
                             Name = "Bottle of water",
                             Price = 0.6m,
@@ -219,7 +207,7 @@ namespace WebShop.Infra.Migrations
             modelBuilder.Entity("WebShop.Core.Entities.ReviewScore", b =>
                 {
                     b.HasOne("WebShop.Core.Entities.Product", "Product")
-                        .WithMany("ReviewsScores")
+                        .WithMany("ReviewsScore")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -234,7 +222,7 @@ namespace WebShop.Infra.Migrations
 
             modelBuilder.Entity("WebShop.Core.Entities.Product", b =>
                 {
-                    b.Navigation("ReviewsScores");
+                    b.Navigation("ReviewsScore");
                 });
 #pragma warning restore 612, 618
         }
