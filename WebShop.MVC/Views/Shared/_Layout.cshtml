@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebShop.MVC</title>
+    <title>@ViewBag.Title - WebShop.MVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/assets/css/main.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebShop.MVC.styles.css" asp-append-version="true" />
@@ -20,7 +20,7 @@
                             <div class="header-info">
                                 <ul>
                                     <li><a href="page-about.htlm">About Us</a></li>
-                                    <li><a href="page-account.html">My Account</a></li>
+                                    <partial name="_LoginPartial">
                                     <li><a href="shop-wishlist.html">Wishlist</a></li>
                                     <li><a href="shop-order.html">Order Tracking</a></li>
                                 </ul>
@@ -79,7 +79,9 @@
                 <div class="container">
                     <div class="header-wrap">
                         <div class="logo logo-width-1">
-                            <a href="index.html"><img src="~/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                            <a asp-controller="Home" asp-action="Index">
+                                <img src="~/assets/imgs/theme/logo.svg" alt="logo" />
+                            </a>
                         </div>
                         <div class="header-right">
                             <div class="search-style-2">
@@ -218,7 +220,9 @@
                 <div class="container">
                     <div class="header-wrap header-space-between position-relative">
                         <div class="logo logo-width-1 d-block d-lg-none">
-                            <a href="index.html"><img src="~/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                        <a asp-controller="Home" asp-action="Index">
+                            <img src="~/assets/imgs/theme/logo.svg" alt="logo" />
+                        </a>
                         </div>
                         <div class="header-nav d-none d-lg-flex">
                             <div class="main-categori-wrap d-none d-lg-block">
@@ -524,7 +528,9 @@
             <div class="mobile-header-wrapper-inner">
                 <div class="mobile-header-top">
                     <div class="mobile-header-logo">
-                        <a href="index.html"><img src="~/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                        <a asp-controller="Home" asp-action="Index">
+                            <img src="~/assets/imgs/theme/logo.svg" alt="logo" />
+                        </a>
                     </div>
                     <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                         <button class="close-style search-close">
@@ -810,7 +816,9 @@
                     <div class="col">
                         <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0 wow animate__animated animate__fadeInUp" data-wow-delay="0">
                             <div class="logo mb-30">
-                                <a href="index.html" class="mb-15"><img src="~/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                                <a asp-controller="Home" asp-action="Index" class="mb-15">
+                                    <img src="~/assets/imgs/theme/logo.svg" alt="logo" />
+                                </a>
                                 <p class="font-lg text-heading">Awesome grocery store website template</p>
                             </div>
                             <ul class="contact-infor">
