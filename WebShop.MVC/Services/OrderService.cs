@@ -37,11 +37,20 @@ namespace WebShop.MVC.Services
             return order;
         }
 
-        void IOrderService.AddProductToCurrentOrder(int productId)
+        async Task IOrderService.AddProductToCurrentOrder(int productId)
         {
+            if (productId < 0)
+                throw new ArgumentOutOfRangeException("Product Id cannot be negative numnber.");
+            
             var order = GetCurrentOrder();
             var product = _productRepository.GetProductWithId(productId);
-            order.Products.Add(product);
+            if (order is not null && product is not null)
+            {
+                order.Products.Add(product);
+                await _orderRepository.Save(order);
+            }
+            else
+                throw new NullReferenceException("Product not found.");
         }
 
         Order? IOrderService.GetInvoicedOrder()
@@ -49,14 +58,33 @@ namespace WebShop.MVC.Services
             throw new NotImplementedException();
         }
 
-        void IOrderService.RemoveProductFromCurrentOrder(int productId, bool all)
+        async Task<bool> IOrderService.RemoveProductFromCurrentOrder(int productId, bool all = false)
         {
-            throw new NotImplementedException();
-        }
+            if (productId < 0)
+                throw new ArgumentOutOfRangeException("Product Id cannot be negative numnber.");
+            
+            var order = GetCurrentOrder();
 
-        void IOrderService.SaveChanges()
-        {
-            throw new NotImplementedException();
+            if (all)
+            {
+                order.Products.Clear();
+                await _orderRepository.Save(order);
+                return true;
+            }
+            else
+            {
+                var product = _productRepository.GetProductWithId(productId);
+                if (product is not null && order is not null)
+                {
+                    if (order.Products.Remove(product))
+                    {
+                        await _orderRepository.Save(order);
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
         }
     }
 }

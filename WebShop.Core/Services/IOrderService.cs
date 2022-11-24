@@ -12,8 +12,7 @@ namespace WebShop.Core.Services
     {
         Order GetCurrentOrder();
         Order? GetInvoicedOrder();
-        void AddProductToCurrentOrder(int productId);
-        void RemoveProductFromCurrentOrder(int productId, bool all = false);
-        void SaveChanges();
+        Task AddProductToCurrentOrder(int productId);
+        Task<bool> RemoveProductFromCurrentOrder(int productId, bool all = false);
     }
 }

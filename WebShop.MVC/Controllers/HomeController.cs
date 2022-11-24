@@ -34,7 +34,7 @@ namespace WebShop.MVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(ProductCategory category = ProductCategory.All, int? minAmount = null, int? maxAmount = null)
+        public IActionResult Index(ProductCategory category = ProductCategory.All, int? minAmount = null, int? maxAmount = null)
         {
             session.SetFilter(category, minAmount, maxAmount);
 
@@ -72,7 +72,7 @@ namespace WebShop.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> ShoppingBasket(int id)
         {
-            orderService.AddProductToCurrentOrder(id);
+            await orderService.AddProductToCurrentOrder(id);
             var order = orderService.GetCurrentOrder();
             Decimal price = 0;
             foreach (var item in order.Products)
@@ -84,6 +84,37 @@ namespace WebShop.MVC.Controllers
             return View(order);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ShoppingBasketDeleteProduct(int id)
+        {
+            await orderService.RemoveProductFromCurrentOrder(id);
+            var order = orderService.GetCurrentOrder();
+            Decimal price = 0;
+            foreach (var item in order.Products)
+            {
+                price += item.Price;
+            }
+            order.Total = price;
+            await orderRepository.Save(order);
+            return View(nameof(ShoppingBasket), (order));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ShoppingBasketDeleteAllProducts()
+        {
+            await orderService.RemoveProductFromCurrentOrder(0, true);
+            var order = orderService.GetCurrentOrder();
+            Decimal price = 0;
+            foreach (var item in order.Products)
+            {
+                price += item.Price;
+            }
+            order.Total = price;
+            await orderRepository.Save(order);
+            return View(nameof(ShoppingBasket), (order));
+        }
+
+        [HttpGet]
         public IActionResult Checkout()
         {
             return View();

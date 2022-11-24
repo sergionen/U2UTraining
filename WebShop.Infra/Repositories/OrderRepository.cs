@@ -13,7 +13,7 @@ namespace WebShop.Infra.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
- 
+
         private readonly WebShopDbContext _db;
 
         private readonly ISessionService session;
@@ -29,8 +29,10 @@ namespace WebShop.Infra.Repositories
             throw new NotImplementedException();
         }
 
-        Order? IOrderRepository.GetOrderWithId(int id)
+        public Order? GetOrderWithId(int id)
         {
+            if (id < 0)
+                throw new ArgumentOutOfRangeException("Id out of range. Cannot be negative number.");
             return _db.Order.Include(o => o.Products).FirstOrDefault(p => p.Id == id);
         }
 
@@ -44,6 +46,7 @@ namespace WebShop.Infra.Repositories
 
         public async Task Save(Order order)
         {
+            _db.Update(order);
             await _db.SaveChangesAsync();
         }
     }

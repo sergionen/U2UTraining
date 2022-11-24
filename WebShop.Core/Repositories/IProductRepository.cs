@@ -11,8 +11,10 @@ namespace WebShop.Core.Repositories
     {
         IEnumerable<Product> GetOnlyProducts();
 
-        IEnumerable<Product> WithFilter(); 
-        
-        Product? GetProductWithId(int id); 
+        IEnumerable<Product> WithFilter();
+
+        Product? GetProductWithId(int id);
+
+
     }
 }

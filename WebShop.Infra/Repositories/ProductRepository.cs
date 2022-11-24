@@ -34,6 +34,7 @@ namespace WebShop.Infra.Repositories
 
         public IEnumerable<Product> WithFilter()
         {
+
             var products = _db.Products.Include(p => p.ReviewsScores).ToList();
             var (minAmount, maxAmount, category) = session.GetFilter();
 
@@ -45,6 +46,7 @@ namespace WebShop.Infra.Repositories
                 products = products.Where(p => p.ProductCategory == category).ToList();
 
             return products;
+
         }
     }
 }
