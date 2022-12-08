@@ -9,8 +9,8 @@ variables:
   debug: true
   resourceGroup: DefaultResourceGroup-WEU
   location: West Europe
-  webAppName: OurAppppppp
-  appServicePlanName: ASP-u2uexample-a5c0
+  webAppName: 0ur4pp
+  appServicePlanName: ASP-euroclearproject-96a5
 stages:
   - stage:
     displayName: Build and Test
@@ -47,7 +47,7 @@ stages:
               command: 'publish'
               publishWebProjects: true
               arguments: >-
-                **configuration $(buildConfiguration) --output
+                --configuration $(buildConfiguration) --output
                 $(Build.ArtifactStagingDirectory)
           - task: PublishBuildArtifacts@1
             displayName: Upload site artifact
@@ -62,23 +62,40 @@ stages:
         displayName: Deploy Webapp
         steps:
           - checkout: none
+          # - task: DownloadPipelineArtifact@2
+          #   displayName: Download build artifactsinputs
+          #   inputs:
+          #     buildType: 'current'
+          #     artifactName: 'drop'
+          #     path: 'C:\Users\Students\Desktop\vsts-agent-win-x64-2.213.2\_work\3\s\drop'
+          #  #Debugging only
+          # - task: PowerShell@2
+          #   condition: eq(variables.debug, ’true’)
+          #   displayName: List drop files (debug)
+          #   inputs:
+          #     script: Get-ChildItem -Path $(Build.SourcesDirectory)\drop -recurse
+          #     targetType: inline
+          # - task: AzureRmWebAppDeployment@4
+          #   inputs:
+          #     ConnectionType: 'AzureRM'
+          #     azureSubscription: 'Azure Pass - Sponsorship (fc64864b-7f89-4712-b7a8-9f1843813ade)'
+          #     appType: 'webApp'
+          #     WebAppName: '$(webAppName)'
+          #     packageForLinux: 'C:\Users\Students\Desktop\vsts-agent-win-x64-2.213.2\_work\3\s\drop\*.zip'
           - task: DownloadPipelineArtifact@2
             displayName: Download build artifactsinputs
             inputs:
-              source: ’current’
-              artifact: ’drop’
-              path: $(Build.SourcesDirectory)/drop
-           #Debugging only
+              buildType: 'current'
+              artifactName: 'drop'
+              path: '$(System.DefaultWorkingDirectory)'
           - task: PowerShell@2
-            condition: eq(variables.debug, ’true’)
             displayName: List drop files (debug)
             inputs:
-              script: Get-ChildItem -Path $(Build.SourcesDirectory)\drop -recurse
+              script: Get-ChildItem -Path $(System.DefaultWorkingDirectory)/drop -recurse
               targetType: inline
           - task: AzureRmWebAppDeployment@4
+            displayName: 'Azure App Service Deploy: 0ur4pp'
             inputs:
-              ConnectionType: ’AzureRM’azure
-              Subscription: ’U2U-Practice-Days’
-              appType: ’webApp’
-              WebAppName: ’$(webAppName)’
-              packageForLinux: ’$(Build.SourcesDirectory)/drop/*.zip’
+              azureSubscription: 'SC_EC'
+              WebAppName: 0ur4pp
+              packageForLinux: '$(System.DefaultWorkingDirectory)/drop/*.zip'
