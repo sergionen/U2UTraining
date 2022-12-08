@@ -1,0 +1,84 @@
+trigger:
+  branches:
+    include:
+      - DBconn
+pool: Default
+variables:
+  buildConfiguration: debug
+  dotnet-version: 6.x
+  debug: true
+  resourceGroup: DefaultResourceGroup-WEU
+  location: West Europe
+  webAppName: OurAppppppp
+  appServicePlanName: ASP-u2uexample-a5c0
+stages:
+  - stage:
+    displayName: Build and Test
+    jobs:
+      - job: Build
+        steps:
+          - task: PowerShell@2
+            displayName: Print all pipeline variables
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "### All pipeline variables###"
+                Write-Host "Build ID"$(build.buildid)
+                Write-Host "Build NR"$(build.buildnumber)
+                Write-Host "buildConfiguration" $(buildConfiguration)
+                Write-Host "dotnet-version" $(dotnet-version)
+                Write-Host "resourceGroup" $(resourceGroup)
+                Write-Host "webAppName" $(webAppName)
+                Write-Host "location" $(location)
+          - task: UseDotNet@2
+            displayName: Install .NET SDK
+            inputs:
+              packageType: sdk
+              version: $(dotnet-version)
+          - task: DotNetCoreCLI@2
+            displayName: Build projects
+            inputs:
+              command: 'build'
+              projects: '**/*.csproj'
+              arguments: '--configuration $(buildConfiguration)'
+          - task: DotNetCoreCLI@2
+            displayName: Publish web project
+            inputs:
+              command: 'publish'
+              publishWebProjects: true
+              arguments: >-
+                **configuration $(buildConfiguration) --output
+                $(Build.ArtifactStagingDirectory)
+          - task: PublishBuildArtifacts@1
+            displayName: Upload site artifact
+            inputs:
+              PathPublish: $(Build.ArtifactStagingDirectory)
+              ArtifactName: drop
+              publishLocation: Container
+  - stage:
+    displayName: Deploy
+    jobs:
+      - job:
+        displayName: Deploy Webapp
+        steps:
+          - checkout: none
+          - task: DownloadPipelineArtifact@2
+            displayName: Download build artifactsinputs
+            inputs:
+              source: ’current’
+              artifact: ’drop’
+              path: $(Build.SourcesDirectory)/drop
+           #Debugging only
+          - task: PowerShell@2
+            condition: eq(variables.debug, ’true’)
+            displayName: List drop files (debug)
+            inputs:
+              script: Get-ChildItem -Path $(Build.SourcesDirectory)\drop -recurse
+              targetType: inline
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: ’AzureRM’azure
+              Subscription: ’U2U-Practice-Days’
+              appType: ’webApp’
+              WebAppName: ’$(webAppName)’
+              packageForLinux: ’$(Build.SourcesDirectory)/drop/*.zip’
